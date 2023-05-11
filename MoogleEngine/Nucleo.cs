@@ -291,7 +291,7 @@ public class Nucleo
 					frecuencia++;//icrementamos la frecuencia
 
 			}
-			arrDocumentosIDFVector[i] = Math.Log10((double)(CantidadDocumentos + 1) / (double)frecuencia); //calculamos el valor de IDF del termino en el documento
+			arrDocumentosIDFVector[i] = Math.Log10(((double)(CantidadDocumentos + 1) / (double)frecuencia)+1.1); //calculamos el valor de IDF del termino en el documento
 			arrConsultaTFIDF[i] = (double)arrConsultaTFVector[i] * (double)arrDocumentosIDFVector[i];
 		}
 		//Calculo de la matriz TF-IDF
