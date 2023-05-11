@@ -201,12 +201,11 @@ public class Nucleo
 		for ( int i = 0; i < estadotermino.Length; i++){//para cada termino
 			if (estadotermino[i] == 2) {//si esta marcado como paso 2
 				lema = Stemming.Stemmear(fraseconsulta[i]); //sacamos la raiz de la palabra
-				string sug =string.Empty;
 				if (lema.Length>0){//si hay raiz
 					sumacolumna =0;//inicializamos la suma
 					j = 0;
 					foreach(var doc in DocumentosConsulta ){//para cada documento
-						vectoresdocumentos[j,i] = (doc.CuentaLema(lema)*2);//ponemos las veces que aparece multiplicada por dos para que el peso sea menor que la palabra
+						vectoresdocumentos[j,i] = (doc.CuentaLema(lema)*2);//ponemos las veces que aparece multiplicada por dos para que el peso sea menor que el de la palabra
 						sumacolumna = sumacolumna +vectoresdocumentos[j,i];//calculamos la suma de la columna
 						j++;
 					}
