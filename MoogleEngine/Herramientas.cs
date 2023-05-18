@@ -56,8 +56,7 @@ public static class Herramientas
 
 
 	//Eliminar los acentos
-	//Entrada: caracter que puede ser acentuado
-	//Salida: caracter sin acentos
+
 	public static char EliminaAcento(char caracter)
     {
         int pos = VocalesAcentuadas.IndexOf(caracter); //indice en las vocales acentuadas
@@ -78,42 +77,17 @@ public static class Herramientas
     }
 
 	//Saber si un caracter es separador de palabras
-	//Entrada: caracter
-	//Salida: verdadero si lo es, falso si no lo es
+
     public static bool EsSeparadorPalabras(char caracter)
     {
         return Separadores.IndexOf(caracter) >= 0; //Si aparece en los separadores de palabra, devuelve verdadero, en caso contrario falso
     }
 
 	//Saber si una palabra esta en las palabras vacías
-	//Entrada: palabra a verificar
-	//Salida: verdadero si lo es, falso si no lo es
     public static bool EsPalabraVacia(string palabra)
     {
         return PalabrasVacias.IndexOf(palabra) >= 0;//Si aparece en las palabras vacías, devuelve verdadero, en caso contrario falso
     }
-	
-	//Saber si un caracter es letra
-	//Entrada: caracter a verificar
-	//Salida: verdadero si lo es, falso si no lo es
-    public static bool EsLetra(char caracter)
-    {
-        return Letras.IndexOf(caracter) >= 0 ? true : false;//Si aparece en las letras, devuelve verdadero, en caso contrario falso
-    }
-
-	//Saber si una palabra esta compuesta solo por letras
-	//Entrada: palabra a verificar
-	//Salida: verdadero si lo es, falso si no lo es
-    public static bool EsPalabra(string palabra)
-    {
-        for (int i = 0; i < palabra.Length; i++) //Si todos los caracters son letras, devuelve verdadero, en caso contrario falso
-            if (!EsLetra(palabra[i]))
-                return false;
-        return true;
-    }
-
-    //Saber si un caracter es caracter de control (ASCII del 0 al 31, del 127 al 160 y del 162 al 190)
-
     public static bool EsCaracterControl(char c)
     {
         return c >= 0 && c <= 31 || c >= 127 && c <= 160 || c >= 162 && c <= 190 ? true : false;
@@ -154,8 +128,7 @@ public static class Herramientas
     }
 	
 	//Buscar los nombres de los archivos *.txt que se encuentran en el camino dado
-	//Entrada: camino donde buscar los archivos
-	//Salida: lista de nombres de archivos
+
     public static List<string> ListaArchivos(string camino)
     {
         return Directory.EnumerateFiles(camino, "*.txt", SearchOption.AllDirectories).ToList();
@@ -251,5 +224,8 @@ public static class Herramientas
 
 		return matriz[limites.alto - 1, limites.ancho - 1];//se devuelve la distancia
 	}
-
+	/*public static bool ExisteTermino(string termino)
+	{
+		return Co;//Si la cantidad de veces que aparece el termino es mayor que 0 devuelve verdadero, falso en caso contrario 
+	}*/
 }

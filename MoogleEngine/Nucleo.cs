@@ -9,7 +9,7 @@ using System.IO;
 public class Nucleo
 {	
 	private List<Documento> Documentos = new List<Documento>();//lista de los documentos
-	private List<string> ListadoPalabrasDocumentos = new List<string>();//lista de las palabras que aparecen en todos los documentos que se utilizará para buscar las sugerencias
+	public  List<string> ListadoPalabrasDocumentos = new List<string>();//lista de las palabras que aparecen en todos los documentos que se utilizará para buscar las sugerencias
 	private string SugerenciaBusqueda = string.Empty;//sugerencia de la búsqueda
 	
 	//Constructor de la clase
@@ -76,7 +76,6 @@ public class Nucleo
 		string[] fraseconsulta;//arreglo donde se almacenaran los terminos de la consulta para buscarlos en el texto
 		string palabra = string.Empty;
 		string lema = string.Empty;
-		List<string> listasinonimos = new List<string>();
 		SearchItem[] resultado;//resultado a devolver
 
 
@@ -87,6 +86,7 @@ public class Nucleo
 		int k = 0; 
 		foreach (var termino in ConsultaRealizada.Terminos)
         {
+
             fraseconsulta[k] =termino.Key;
 			k++;
         }
@@ -120,6 +120,7 @@ public class Nucleo
 		//damos valores a los elementos del vector TF de la consulta
 		k = 0; 
 		foreach (var termino in ConsultaRealizada.Terminos) {//para cada uno de los términos de la consulta
+
             vectorconsulta[k] =termino.Value;//ponemos la cantidad de veces que aparece el término
 
 			k++;
@@ -313,7 +314,7 @@ public class Nucleo
 			querydenominator = 0;
 			for (int j = 0; j < CantidadTerminos; j++)
 			{//para cada uno de los terminos
-				numerator = numerator + ((float)arrDocumentosTFIDFVector[i, j] * (float)arrConsultaTFIDF[j]);//sumamos valores
+				numerator = numerator + ((double)arrDocumentosTFIDFVector[i, j] * (double)arrConsultaTFIDF[j]);//sumamos valores
 				denominator = denominator + Math.Pow((double)arrDocumentosTFIDFVector[i, j], 2);
 				querydenominator = querydenominator + Math.Pow((double)arrConsultaTFIDF[j], 2);
 			}
