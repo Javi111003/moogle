@@ -25,7 +25,8 @@ cd ..
 cd script
 ;;
 show_report)
-     
+cd ..
+cd informe
     case "$viewer" in
 
         evince) evince informe.pdf 
@@ -41,7 +42,8 @@ esac
 
 ;;
 show_slides)
-
+cd ..
+cd presentacion
     case "$viewer" in
 
         evince) evince Presentacion.pdf 
